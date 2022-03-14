@@ -13,5 +13,31 @@
   font-size:20px;
   color: rgb(0, 0, 0);
   border: 1px black;
+  position: fixed;
+  width: 100%;
+
 }
 
+.Navigator {
+
+}
+
+.content {
+  text-align: center;
+  width: 100vw;
+
+}
+
+
+.contentPic {
+  width: 100vw;
+  object-fit: contain;
+
+}
+.contentBox {
+  text-align: center;
+  width: 80vw;
+  margin: auto;
+  margin-bottom: 30px;
+  overflow: scroll;
+}
