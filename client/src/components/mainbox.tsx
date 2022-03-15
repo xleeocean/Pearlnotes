@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
-import Content from './content';
+import ProductMenu from './productMenu';
 
 
 
@@ -70,7 +70,7 @@ export default function MainBox() {
           </Drawer>
         </React.Fragment>
       ))}
-      <Content/>
+      <ProductMenu/>
     </div>
   );
 }

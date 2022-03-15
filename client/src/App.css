@@ -12,10 +12,12 @@ h3 {
   color: rgb(58, 76, 76);
   font-size: 20px;
   font-style: oblique;
+  line-height: 3;
+
 }
 .AppHeader {
   background-color: white;
-  height: 180px;
+  height: 125px;
   /* display:block; */
   text-align: center;
   font-size:20px;
