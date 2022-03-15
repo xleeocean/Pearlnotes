@@ -25,12 +25,12 @@ export default function Content() {
       <div className='contentBox'>
         <h3>PEARL TYPE</h3>
         <Box sx={{ flexGrow: 1 }}>
-          <Grid container spacing={1}>
+          <Grid container spacing={0}>
             <Grid item xs={5}>
               <Item>Tahitian</Item>
             </Grid>
             <Grid item xs={5}>
-              <Item>South Sea</Item>
+              <Item>South Sea Gold</Item>
             </Grid>
             <Grid item xs={3}>
               <Item>Akoya</Item>
@@ -47,10 +47,11 @@ export default function Content() {
 
       <div className='contentBox'>
         <h3>JEWELRY TYPE</h3>
-        <Box sx={{ flexGrow: 1 }}>
-          <Grid container spacing={1}>
+        <Box sx={{ flexGrow: 2}}>
+          <Grid container spacing={0}>
           <Grid item xs={3}>
-              <Item>Necklace</Item>
+              {/* <Item>Necklace</Item> */}
+              <img src= "./assets/necklace1.jpeg" alt="necklace" height="150px" />
             </Grid>
             <Grid item xs={4}>
               <Item>Pendants</Item>
