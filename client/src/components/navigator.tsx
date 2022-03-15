@@ -33,6 +33,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -55,16 +56,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function Navigator() {
   return (
 
-    <Box className = 'Navigator' sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
+    <Box  className='Navigator' sx={{ flexGrow: 1 }}>
+      <AppBar className='Navigator' position='relative' color='transparent' >
+        <Toolbar >
+          <IconButton >
             <MenuIcon />
           </IconButton>
           <Typography
@@ -80,17 +75,13 @@ export default function Navigator() {
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
+              inputProps={{ 'sans-serif-label': 'search' }}
+              
+
             />
           </Search>
 
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
+          <IconButton>
             <ShoppingBasketOutlined />
           </IconButton>
 

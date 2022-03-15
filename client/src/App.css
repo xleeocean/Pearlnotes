@@ -1,32 +1,65 @@
 .App {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: sans-serif;
+  font-size: small;
   color: black;
+  height: 100vh;
+  width: 100vw;
 
 }
 
-
-.App-header {
-  background-color: #cae2b7;
-  height: 60px;
-  display: fix;
+h3 {
+  font-family:'Times New Roman', Times, serif;
+  color: rgb(58, 76, 76);
+  font-size: 20px;
+  font-style: oblique;
+}
+.AppHeader {
+  background-color: white;
+  height: 180px;
+  /* display:block; */
   text-align: center;
   font-size:20px;
-  color: rgb(0, 0, 0);
-  border: 1px black;
+  color: black;
   position: fixed;
   width: 100%;
+  z-index: 2;
 
 }
 
 .Navigator {
+  background-color: white;
+  height: 40px;
+}
+
+
+.MuiToolbar-root {
+  min-height: 40px !important;
+  height: 40px !important;
+}
+
+.MuiInputBase-input {
+  font: -webkit-control !important;
+}
+
+.Body {
+  position:absolute;
+  margin-top: 150px;
+  height: calc(100vj - 150px);
 
 }
 
 .content {
   text-align: center;
   width: 100vw;
+  overflow-y: scroll;
+  height: calc(100vh -150px);
 
 }
+
+/* .MainBox {
+  overflow-y: scroll;
+  position:fixed;
+} */
 
 
 .contentPic {
@@ -40,4 +73,9 @@
   margin: auto;
   margin-bottom: 30px;
   overflow: scroll;
+}
+
+.App-footer {
+  text-align: center;
+  color: gray;
 }

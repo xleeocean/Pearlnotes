@@ -57,7 +57,7 @@ export default function MainBox() {
   );
 
   return (
-    <div>
+    <div className="MainBox">
       {(['left', 'right'] as const).map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
