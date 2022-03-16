@@ -80,7 +80,7 @@ export default function Navigator() {
           </Search>
 
           <IconButton>
-            <ShoppingBasketOutlined />
+            <ShoppingBasketOutlined/>
           </IconButton>
 
         </Toolbar>

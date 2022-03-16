@@ -10,9 +10,9 @@ function App() {
         <img src= "/assets/Logo1.png" alt="logo" height="100px" />
         <Navigator/>
       </header>
-      <body className= "Body">
+      <div className= "Body">
         <MainBox/>
-      </body>
+      </div>
 
       {/* <footer className="App-footer" > Created by Alice</footer> */}
     </div>

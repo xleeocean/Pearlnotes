@@ -8,11 +8,15 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import { Theme, useTheme } from '@mui/material/styles';
 import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
+import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import Typography from '@mui/material/Typography';
 import AddShoppingCartOutlined from '@mui/icons-material/AddShoppingCartOutlined';
+import SortOutlinedIcon from '@mui/icons-material/SortOutlined';
+import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
+import IconButton from '@mui/material/IconButton';
 
 
 const ITEM_HEIGHT = 48;
@@ -110,7 +114,7 @@ export default function ProductList() {
     <div className='contentBox'>
       <Toolbar className='ToolBar' sx={{ flexGrow: 1 }}>
         {/* Sort */}
-        <InputLabel id="demo-simple-select-standard-label">Sort by:</InputLabel>
+        <SortOutlinedIcon sx={{ color: 'rgb(58, 76, 76)' }}/>
         <Select
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
@@ -127,8 +131,7 @@ export default function ProductList() {
 
 
         {/* Filter */}
-
-        <InputLabel id="demo-simple-select-standard-label">Filter:</InputLabel>
+        <FilterAltOutlinedIcon sx={{ color: 'rgb(58, 76, 76)' }}/>
         <Select
           labelId="demo-multiple-name-label"
           id="demo-multiple-name"
@@ -149,27 +152,51 @@ export default function ProductList() {
       </Toolbar>
 
       {/* ProductList */}
-      <ImageList sx={{ width: 800, height: 450 }}>
+      {/* <ImageList >
         {itemData.map((item) => (
-          <ImageListItem key={item.img}>
+          <ImageListItem key={item.img} sx={{width: 300}}>
             <img
               src={`${item.img}?w=248&fit=crop&auto=format`}
               srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
               alt={item.title}
               loading="lazy"
             />
-            <ImageListItemBar
-              title={item.title}
-              subtitle={<span>by: {item.author}</span>}
-              position="below"
 
-            />
-            <div>
+            <div className='listTag'>
               helloe
             </div>
           </ImageListItem>
         ))}
-      </ImageList>
+
+      </ImageList> */}
+
+      <div className='flexbox'>
+        {itemData.map((item) => (
+          <div className='flexbox-div' key={item.img} >
+            <img className='productPic'
+              src={`${item.img}?w=248&fit=crop&auto=format`}
+              srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+              alt={item.title}
+              loading="lazy"
+
+            />
+            <div className='listTag'>
+              <h4>Title</h4>
+              <p>Introduction IntroductionIntroductionIntroduction IntroductionIntroductionIntroduction IntroductionIntroductionIntroductionIntroduction</p>
+
+              <div className='addToCart'>
+                <h5>$3000</h5>
+                <IconButton style={{position:"absolute", left:'60px', bottom:"-8px"}}>
+                  <AddShoppingCartOutlined fontSize="small"  />
+                </IconButton>
+
+              </div>
+
+            </div>
+
+          </div>
+        ))}
+      </div>
 
     </div>
 
