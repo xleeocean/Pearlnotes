@@ -17,7 +17,7 @@ h3 {
 }
 .AppHeader {
   background-color: white;
-  height: 125px;
+  height: 105px;
   /* display:block; */
   text-align: center;
   font-size:20px;
@@ -28,20 +28,38 @@ h3 {
 
 }
 
+.MainBox {
+  text-align: center;
+}
+
 .Navigator {
   background-color: white;
   height: 40px;
 }
 
-
+.MuiInputLabel-root {
+  margin: 10px;
+}
 .MuiToolbar-root {
   min-height: 40px !important;
   height: 40px !important;
+  flex-wrap: wrap !important;
+}
+
+.MuiOutlinedInput-root {
+  min-width: 100px;
+  width: auto;
+  height: 40px;
+  border-radius: 0px !important;
 }
 
 .MuiInputBase-input {
   font: -webkit-control !important;
 }
+
+/* .MuiImageList-root {
+  overflow: hidden;
+} */
 
 .Body {
   position:absolute;
@@ -53,28 +71,21 @@ h3 {
 .content {
   text-align: center;
   width: 100vw;
-  overflow-y: scroll;
   height: calc(100vh -150px);
 
 }
-
-/* .MainBox {
-  overflow-y: scroll;
-  position:fixed;
-} */
-
 
 .contentPic {
   width: 100vw;
   object-fit: contain;
 
 }
+
 .contentBox {
   text-align: center;
   width: 80vw;
   margin: auto;
   margin-bottom: 30px;
-  overflow: scroll;
 }
 
 .App-footer {

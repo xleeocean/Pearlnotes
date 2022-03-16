@@ -6,6 +6,7 @@ import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ProductMenu from './productMenu';
+import ProductList from './productList';
 
 
 
@@ -71,6 +72,7 @@ export default function MainBox() {
         </React.Fragment>
       ))}
       <ProductMenu/>
+      <ProductList/>
     </div>
   );
 }

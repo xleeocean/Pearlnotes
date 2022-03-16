@@ -76,8 +76,6 @@ export default function Navigator() {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'sans-serif-label': 'search' }}
-              
-
             />
           </Search>
 

@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <header className="AppHeader">
-        <img src= "/assets/Logo1.png" alt="logo" height="120px" />
+        <img src= "/assets/Logo1.png" alt="logo" height="100px" />
         <Navigator/>
       </header>
       <body className= "Body">
