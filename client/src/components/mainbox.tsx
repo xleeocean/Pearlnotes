@@ -2,11 +2,9 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
 import ProductMenu from './productMenu';
 import ProductList from './productList';
+import Cart from './cart';
 
 
 
@@ -39,7 +37,7 @@ export default function MainBox() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List>
+      {/* <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem button key={text}>
            gafdgdf
@@ -53,7 +51,8 @@ export default function MainBox() {
             hfghdtrhtr
           </ListItem>
         ))}
-      </List>
+      </List> */}
+      <Cart/>
     </Box>
   );
 

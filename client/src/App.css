@@ -16,10 +16,13 @@ h3 {
 }
 
 h4 {
+  color: rgb(58, 76, 76);
   font-family:sans-serif;
   font-size: medium;
   line-height: 1;
-  margin: 0px;
+  margin-block-start: 10px;
+  margin-block-end: 5px;
+  /* margin-top: 5px; */
 }
 
 h5 {
@@ -28,9 +31,13 @@ h5 {
   line-height: 1;
   margin: 0px;
   font-style:italic;
-  /* font-weight: normal; */
   display: inline-block;
   text-align: start;
+}
+
+p {
+  margin-block-start: 5px;
+  margin-block-end: 5px;
 }
 
 .AppHeader {
@@ -42,7 +49,9 @@ h5 {
   position: fixed;
   width: 100%;
   z-index: 2;
-
+  top: 0px;
+  left: 0px;
+  right: 0px;
 }
 
 .MainBox {
@@ -50,8 +59,59 @@ h5 {
 }
 
 .Navigator {
-  background-color: white;
+  background-color: white ;
   height: 40px;
+}
+
+.MuiButton-root {
+  background-color: white !important;
+  color: black !important;
+  border-radius: 5px  !important;
+  border: 1px solid lightgrey !important;
+  height: 30px !important;
+  width: 100% !important;
+  font-size: small !important;
+  font-family:sans-serif  !important;
+  margin-top: 10px !important;
+
+}
+
+/* Cart */
+.cart {
+  padding: 15px;
+  line-height: 1;
+  font-size: small;
+  font-family: sans-serif;
+  overflow-y: scroll;
+}
+
+.cartItem {
+display: inline-flex;
+}
+
+.cartPic{
+width: 80px;
+height: 80px;
+border: 1px solid black;
+margin-right: 10px;
+margin-top: 5px;
+}
+
+.adjustQuatity {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: center;
+
+
+}
+
+
+.MuiPaper-root {
+  width: 300px;
 }
 
 .MuiInputLabel-root {

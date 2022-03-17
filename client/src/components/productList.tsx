@@ -1,18 +1,10 @@
 import * as React from 'react';
 import Toolbar from '@mui/material/Toolbar';
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import { Theme, useTheme } from '@mui/material/styles';
 import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
-import Box from '@mui/material/Box';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
-import Typography from '@mui/material/Typography';
 import AddShoppingCartOutlined from '@mui/icons-material/AddShoppingCartOutlined';
 import SortOutlinedIcon from '@mui/icons-material/SortOutlined';
 import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
@@ -149,6 +141,7 @@ export default function ProductList() {
             </MenuItem>
           ))}
         </Select>
+
       </Toolbar>
 
       {/* ProductList */}
