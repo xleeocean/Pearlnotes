@@ -40,12 +40,12 @@ const images2 = [
   },
   {
     src: '/assets/Bracelets.jpeg',
-    title: 'Bracelets',
+    title: 'Bracelet',
     width: '50%',
   },
   {
     src: '/assets/Pendant.jpeg',
-    title: 'Pendants',
+    title: 'Pendant',
     width: '30%',
   },
   {
@@ -55,7 +55,7 @@ const images2 = [
   },
   {
     src: '/assets/ring2.jpeg',
-    title: 'Rings',
+    title: 'Ring',
     width: '30%',
   },
 ];

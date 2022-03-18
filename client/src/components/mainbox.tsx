@@ -1,13 +1,15 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import ProductMenu from './ProductMenu';
 import ProductList from './ProductList';
+import { AppContext } from '../AppContext'
 
 export default function MainBox() {
-  const [filter, setFilter] = React.useState("b");
+  const { selected } = useContext(AppContext);
+
 
   return (
     <div className="MainBox">
-      {filter ? <ProductList/> : <ProductMenu/>}
+      {selected.length > 0 ? <ProductList/> : <ProductMenu/>}
     </div>
   );
 }

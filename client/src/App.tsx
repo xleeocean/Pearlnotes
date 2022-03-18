@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Navigator from './components/Navigator';
 import MainBox from './components/MainBox';
-import { AppProvider } from './AppProvider'
+import { AppProvider } from './AppContext'
 
 function App() {
   return (

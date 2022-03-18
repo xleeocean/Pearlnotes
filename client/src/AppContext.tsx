@@ -1,9 +1,10 @@
 import React, { useState, createContext, FC } from "react";
 
 interface AppContextInterface {
-  // drawer: boolean;
   selected: string[];
   setSelected?: React.Dispatch<React.SetStateAction<never[]>>;
+  pearlType:string[];
+  jewelryType:string[];
   // cartItems: {
   //   id: string;
   //   tilte: string;
@@ -13,23 +14,29 @@ interface AppContextInterface {
 }
 
 const defaultState = {
-  // drawer: false,
-  selected: []
+  selected: [],
+  pearlType: ['Thitian','South Sea Gold', 'Akoya', 'Freshwater', 'Baroque'],
+  jewelryType: ['Necklace','Pendant', 'Bracelet', 'Earrings', 'Ring'],
 }
 
 const AppContext = createContext<AppContextInterface>(defaultState);
 
-export const AppProvider: FC = ({ children }) => {
+const AppProvider: FC = ({ children }) => {
   const [selected, setSelected] = useState(defaultState.selected);
+  const [pearlType] = useState(defaultState.pearlType);
+  const [jewelryType] = useState(defaultState.jewelryType);
 
   return (
     <AppContext.Provider
       value = {{
-        selected,
-        setSelected,
+        selected, setSelected,
+        pearlType,
+        jewelryType,
       }}
     >
       { children }
     </AppContext.Provider>
   );
 };
+
+export { AppContext, AppProvider };
