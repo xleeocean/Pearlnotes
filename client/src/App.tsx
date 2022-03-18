@@ -8,10 +8,10 @@ function App() {
   return (
     <AppProvider>
       <div className="App">
-        <header className="Header">
+        <div className="Header">
           <img src= "/assets/Logo1.png" alt="logo" height="100px" />
           <Navigator/>
-        </header>
+        </div>
         <div className= "Body">
           <MainBox/>
         </div>
