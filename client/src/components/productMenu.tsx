@@ -4,8 +4,6 @@ import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
 
-
-
 const images1 = [
   {
     src: '/assets/Tahitian2.jpeg',
@@ -198,12 +196,6 @@ export default function Content() {
           ))}
         </Box>
       </div>
-
-
     </div>
-
-
   );
 }
-
-

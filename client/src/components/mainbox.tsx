@@ -2,11 +2,9 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
-import ProductMenu from './productMenu';
-import ProductList from './productList';
-import Cart from './cart';
-
-
+import ProductMenu from './ProductMenu';
+import ProductList from './ProductList';
+import Cart from './Cart';
 
 type Anchor = 'left' | 'right';
 
@@ -15,6 +13,8 @@ export default function MainBox() {
     left: false,
     right: false,
   });
+
+  const [filter, setFilter] = React.useState("b");
 
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
@@ -37,30 +37,16 @@ export default function MainBox() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      {/* <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-           gafdgdf
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            hfghdtrhtr
-          </ListItem>
-        ))}
-      </List> */}
       <Cart/>
     </Box>
   );
+
 
   return (
     <div className="MainBox">
       {(['left', 'right'] as const).map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+          <Button onClick={toggleDrawer(anchor, true)}>right</Button>
           <Drawer
             anchor={anchor}
             open={state[anchor]}
@@ -70,8 +56,16 @@ export default function MainBox() {
           </Drawer>
         </React.Fragment>
       ))}
-      <ProductMenu/>
-      <ProductList/>
+      {filter ? <ProductList/> : <ProductMenu/>}
+      {/* if (!view[list]) {
+        <ProductMenu/>
+      } else {
+        <ProductList/>
+      } */}
+
+
+
+
     </div>
   );
 }

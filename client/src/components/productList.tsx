@@ -83,7 +83,6 @@ export default function ProductList() {
   const [jewelry, setJewelry] = React.useState<string[]>([]);
 
 
-
   const handleChange = (event: SelectChangeEvent) => {
     setSort(event.target.value);
   };
