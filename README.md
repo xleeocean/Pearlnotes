@@ -21,11 +21,45 @@ The product list feather displays the photos and introduction of the products. L
 
 The cart feather shows the in cart products and the total price.  Users can adjust quantity and check out  in the cart.
 
-## Architectural Pattern
+## Requirement Fulfilled
+* Use a modern JS Library/Framework like React, Angular, etc.
 
-MVC
+PearlNotes front-end is fully based on latest React library with Typescript.
+
+* Create an application that can be interacted with in a minimum of three different ways by the user.
+
+User will be able to do the following things: 
+  1. User can view the Jewelries by selecting different types.
+  2. User can add Jewelries to the shopping cart.
+  3. User can increase/descrease the quantity of the Jewelries. 
+
+* The usage of a special architectural pattern:
+
+
+* Integration with a backend service developed by you with CRUD:
+
+User can manipulate their Jewelry items inside the shopping cart. All the traffic are handled by backend service and Shopify REST APIs. That includes:
+1. Create shopping cart with a global unique ID when a user add first jewelry into the cart
+2. Retrieve existing cart if the user already has the cart ID.
+3. Increase and describe the quantity of the items inside the shopping cart.
+4. Once the quantity of one item is zero. The item will be removed from shopping cart.
+
+* Integration wtih a 3rd party RESTFUL API:
+
+Integrated with Shopify APIs.
+
+* Usage of at least 5 UI components from material-ui/@core:
+
+
+* An example of a resuable component that you have created and used in the app:
+
+
+## Architecture
+
+<img width="624" alt="Screen Shot 2022-03-20 at 06 46 28" src="https://user-images.githubusercontent.com/80747028/159166289-9eada34c-b1da-4fb4-9aad-0491936beb93.png">
 
 ## Front-end
+Tech Stack: React with Typescript, Maria UI
 
 Architectural Overview:
 
@@ -34,7 +68,12 @@ Architectural Overview:
 The application is created in React framework with customized MUI components. Such as Button, IconButton, Box, Drawer, List,  ToolBar and AppBar. There are also self-built reusable components such as cartItem. React context is used for data communication between components. Responsive design was used in UI to  ensure content consistency across devices. 
 
 ## Back-end
-
+Our back-end service play an intermedia role between our front-end UI and the Shopify APIs. It converts the complex data format from Shopify, extract and simplify the structure for our front-end web apps. 
 
 
 ## Setup
+For server:
+cd server; npm install; npm run build; npm run start;
+
+For client:
+cd client; npm install; npm run start;
