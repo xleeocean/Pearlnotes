@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Toolbar from '@mui/material/Toolbar';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
@@ -9,6 +9,7 @@ import AddShoppingCartOutlined from '@mui/icons-material/AddShoppingCartOutlined
 import SortOutlinedIcon from '@mui/icons-material/SortOutlined';
 import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 import IconButton from '@mui/material/IconButton';
+import axios, { AxiosResponse } from 'axios';
 import { AppContext } from '../AppContext'
 
 
@@ -77,17 +78,38 @@ const itemData = [
   },
 ];
 
+interface Product {
+  id: string,
+  title: string,
+  image: string,
+  typeStr: string,
+}
 
 export default function ProductList() {
   const [sort, setSort] = React.useState('');
   const [pearl, setPearl] = React.useState<string[]>([]);
   const [jewelry, setJewelry] = React.useState<string[]>([]);
   const { selected, setSelected } = useContext(AppContext);
+  const [products, setProducts] = React.useState<Product[]>([]);
+
+  useEffect(() => {
+    const fetchProducts = async() => {
+      try {
+        const response = await fetch('http://localhost:3002/products/list', {mode:'cors'});
+        const products = await response.json();
+        setProducts(products);
+        console.log(products);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    fetchProducts();
+  }, []);
 
   const handleChange = (event: SelectChangeEvent) => {
     setSort(event.target.value);
   };
-
 
   const handleFilter = (event: SelectChangeEvent<typeof pearl>) => {
     const {
@@ -145,10 +167,10 @@ export default function ProductList() {
       {/* ProductList */}
       {/* <ImageList >
         {itemData.map((item) => (
-          <ImageListItem key={item.img} sx={{width: 300}}>
+          <ImageListItem key={item.image} sx={{width: 300}}>
             <img
-              src={`${item.img}?w=248&fit=crop&auto=format`}
-              srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+              src={`${item.image}?w=248&fit=crop&auto=format`}
+              srcSet={`${item.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
               alt={item.title}
               loading="lazy"
             />
@@ -162,11 +184,11 @@ export default function ProductList() {
       </ImageList> */}
 
       <div className='flexbox'>
-        {itemData.map((item) => (
-          <div className='flexbox-div' key={item.img} >
+        {products ? products.map((item) => (
+          <div className='flexbox-div' key={item.image} >
             <img className='productPic'
-              src={`${item.img}?w=248&fit=crop&auto=format`}
-              srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+              src={`${item.image}?w=248&fit=crop&auto=format`}
+              srcSet={`${item.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
               alt={item.title}
               loading="lazy"
 
@@ -191,7 +213,7 @@ export default function ProductList() {
             </div>
 
           </div>
-        ))}
+        )) : null}
       </div>
 
     </div>
