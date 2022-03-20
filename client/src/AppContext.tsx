@@ -11,12 +11,23 @@ interface IAppContextInterface {
   setSelected?: React.Dispatch<React.SetStateAction<string>>,
   pearlTypes: ITypeProfile[],
   jewelryTypes: ITypeProfile[],
+  products: IProductProfile[],
+  fetchProducts?: (reverse: string, type: string) => Promise<void>,
   // cartItems: {
   //   id: string;
   //   tilte: string;
   //   price: number;
   //   quantity: number;
   // }[]
+}
+
+interface IProductProfile {
+  id: string,
+  title: string,
+  image: string,
+  typeStr: string,
+  description: string,
+  price: string,
 }
 
 const defaultState = {
@@ -74,7 +85,8 @@ const defaultState = {
       name: 'Ring',
       width: '30%',
     },
-  ]
+  ],
+  products: [],
 }
 
 const AppContext = createContext<IAppContextInterface>(defaultState);
@@ -83,6 +95,19 @@ const AppProvider: FC = ({ children }) => {
   const [selected, setSelected] = useState(defaultState.selected);
   const [pearlTypes] = useState(defaultState.pearlTypes);
   const [jewelryTypes] = useState(defaultState.jewelryTypes);
+  const [products, setProducts] = useState(defaultState.products);
+
+  const fetchProducts = async(reverse: string, type: string) => {
+    try {
+      const response = await fetch(`http://localhost:3002/products/list?reverse=${reverse}&type=${type}`, {mode:'cors'});
+      const products = await response.json();
+      setProducts(products);
+      console.log(products);
+    } catch (err) {
+      console.log(err);
+    }
+    setSelected(type);
+  }
 
   return (
     <AppContext.Provider
@@ -91,6 +116,8 @@ const AppProvider: FC = ({ children }) => {
         setSelected,
         pearlTypes,
         jewelryTypes,
+        products,
+        fetchProducts,
       }}
     >
       { children }
@@ -100,3 +127,4 @@ const AppProvider: FC = ({ children }) => {
 
 export { AppContext, AppProvider};
 export interface IProductType extends ITypeProfile {};
+export interface IProduct extends IProductProfile{};

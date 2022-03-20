@@ -70,13 +70,13 @@ const ImageMarked = styled('span')(({ theme }) => ({
 }));
 
 export default function Content() {
-  const { setSelected, pearlTypes, jewelryTypes } = useContext(AppContext);
+  const { pearlTypes, jewelryTypes, fetchProducts } = useContext(AppContext);
 
   const selectType =
     (productType: string) =>
     (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (setSelected) {
-        setSelected(productType);
+      if (fetchProducts) {
+        fetchProducts('false', productType);
       } 
   };
 

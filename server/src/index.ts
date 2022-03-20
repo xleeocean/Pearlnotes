@@ -8,5 +8,6 @@ const port = 3002;
 app.use(cors({
     origin: '*'
 }));
+
 app.use('/products', ProductsRouter);
 app.listen(port, () => console.log(`Running on port ${port}`));
