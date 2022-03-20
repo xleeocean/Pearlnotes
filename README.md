@@ -99,6 +99,10 @@ Tech Stack: React with Typescript, Maria UI
 
 ### Mobile View
 
+![image](https://user-images.githubusercontent.com/80747028/159177101-23c2861a-b07c-4d8d-8205-796690957e71.png)
+
+
+
 
 ## Back-end
 Our back-end service play an intermedia role between our front-end UI and the Shopify APIs. It converts the complex data format from Shopify, extract and simplify the structure for our front-end web apps. It provides the following APIs:
