@@ -49,27 +49,6 @@ export default function ProductList() {
           <MenuItem value='false'>Price low to high</MenuItem>
           <MenuItem value='true'>Price high to low</MenuItem>
         </Select>
-
-
-        {/* Filter */}
-        {/*<FilterAltOutlinedIcon sx={{ color: 'rgb(58, 76, 76)' }}/>
-        <Select
-          labelId="demo-multiple-name-label"
-          id="demo-multiple-name"
-          multiple
-          value={pearl}
-          onChange={handleFilter}
-          input={<OutlinedInput label="Pearl" />}
-          renderValue={(selected) => selected.join(', ')}
-          MenuProps={MenuProps}
-        >
-          {pearltp.map((pearlSel) => (
-            <MenuItem key={pearlSel} value={pearlSel}>
-              <Checkbox checked={pearl.indexOf(pearlSel) > -1} />
-              <ListItemText primary={pearlSel} />
-            </MenuItem>
-          ))}
-        </Select>*/}
       </Toolbar>
 
       <div className='flexbox'>
@@ -88,13 +67,10 @@ export default function ProductList() {
               <div className='addToCart'>
                 <h5>${item.price}</h5>
                 <IconButton style={{position:"absolute", left:'60px', bottom:"-8px"}}>
-                  <AddShoppingCartOutlined fontSize="small" onClick={() => addProductToCart ? addProductToCart(item.merchandiseId) : null} />
+                  <AddShoppingCartOutlined fontSize="small" onClick={() => addProductToCart ? addProductToCart(item) : null} />
                 </IconButton>
-
               </div>
-
             </div>
-
           </div>
         )) : null}
       </div>

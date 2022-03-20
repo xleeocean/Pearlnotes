@@ -6,6 +6,16 @@ interface ITypeProfile {
   width: string,
 }
 
+interface IProductProfile {
+  id: string,
+  title: string,
+  image: string,
+  typeStr: string,
+  description: string,
+  price: string,
+  merchandiseId: string,
+}
+
 interface ICarItem {
   merchandiseId: string,
   merchandiseLineId: string,
@@ -24,20 +34,11 @@ interface IAppContextInterface {
   pearlTypes: ITypeProfile[],
   jewelryTypes: ITypeProfile[],
   products: IProductProfile[],
+  selectedProducts: IProductProfile[],
   fetchProducts?: (reverse: string, type: string) => Promise<void>,
   cart: ICar,
-  addProductToCart?: (merchandiseId: string) => Promise<void>,
+  addProductToCart?: (product: IProductProfile) => Promise<void>,
   updateCartItemQuantity?: (merchandiseLineId: string, quantity: number) => Promise<void>,
-}
-
-interface IProductProfile {
-  id: string,
-  title: string,
-  image: string,
-  typeStr: string,
-  description: string,
-  price: string,
-  merchandiseId: string,
 }
 
 const defaultState = {
@@ -98,10 +99,11 @@ const defaultState = {
   ],
   products: [],
   cart: {
-    id: 'Z2lkOi8vc2hvcGlmeS9DYXJ0Lzg3N2ZjZmMwYTVkMTU3MjZjMWM4NzBmN2ViNDZjZWIx',
+    id: '',
     products: [],
     totalAmount: '0.0'
-  }
+  },
+  selectedProducts: [],
 }
 
 const AppContext = createContext<IAppContextInterface>(defaultState);
@@ -112,6 +114,7 @@ const AppProvider: FC = ({ children }) => {
   const [jewelryTypes] = useState(defaultState.jewelryTypes);
   const [products, setProducts] = useState(defaultState.products);
   const [cart, setCart] = useState(defaultState.cart);
+  const [selectedProducts, setSelectedProducts] = useState<IProductProfile[]>([]);
 
   const fetchProducts = async(reverse: string, type: string) => {
     try {
@@ -125,13 +128,13 @@ const AppProvider: FC = ({ children }) => {
     setSelected(type);
   }
 
-  const addProductToCart = async(merchandiseId: string) => {
+  const addProductToCart = async(product: IProductProfile) => {
     const requestOptions: any = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       mode: 'cors',
     };
-    var body: any = { merchandiseId: merchandiseId, quantity: 1 }
+    var body: any = { merchandiseId: product.merchandiseId, quantity: 1 }
     try {
       if (cart.id.length === 0) {
         requestOptions.body = JSON.stringify(body);
@@ -142,9 +145,11 @@ const AppProvider: FC = ({ children }) => {
         requestOptions.body = JSON.stringify(body);
         const response = await fetch(`http://localhost:3002/cart/add`, requestOptions);
         const cartData = await response.json();
+
         console.log(cartData);
         setCart(cartData);
       }
+      setSelectedProducts([...selectedProducts, product]);
     } catch (err) {
       console.log(err);
     }
@@ -177,6 +182,7 @@ const AppProvider: FC = ({ children }) => {
         addProductToCart,
         updateCartItemQuantity,
         cart,
+        selectedProducts,
       }}
     >
       { children }

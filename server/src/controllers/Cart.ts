@@ -81,9 +81,8 @@ class CartController {
               ]
               attributes: { key: "cart_attribute", value: "test cart" }
             }
-          ) cart 
-        ` + SHOPIFY_CART_PAYLOAD + SHOPIFY_USER_ERROR_PAYLOAD + '}';
-    console.log(payload);
+          ) { cart 
+        ` + SHOPIFY_CART_PAYLOAD + SHOPIFY_USER_ERROR_PAYLOAD + '}}';
     try {
       let response: AxiosResponse = await axios.post(
         `https://alice-twi.myshopify.com/api/2022-01/graphql.json`, 
@@ -95,8 +94,8 @@ class CartController {
           }
         });
       let data = response.data;
-      console.log(JSON.stringify(data));
-      let result: ICart = await CartController.convert(data.data.cart);
+      // console.log(JSON.stringify(data));
+      let result: ICart = await CartController.convert(data.data.cartCreate.cart);
       res.status(201).json(result);
     } catch (err) {
       console.log(err);

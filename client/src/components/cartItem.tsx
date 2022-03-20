@@ -6,10 +6,10 @@ import { AppContext, IProduct } from '../AppContext'
 
 
 export default function CartItem (props: any) {
-  const { products, updateCartItemQuantity } = useContext(AppContext);
+  const { selectedProducts, updateCartItemQuantity } = useContext(AppContext);
 
   const findPrice = (merchandiseId: string) => {
-    for (var p of products) {
+    for (var p of selectedProducts) {
       if (p.merchandiseId === merchandiseId) {
         return p.price;
       }
@@ -18,7 +18,7 @@ export default function CartItem (props: any) {
   }
 
   const findImage = (merchandiseId: string) => {
-    for (var p of products) {
+    for (var p of selectedProducts) {
       if (p.merchandiseId === merchandiseId) {
         return p.image;
       }
@@ -27,7 +27,7 @@ export default function CartItem (props: any) {
   }
 
   const findTitle = (merchandiseId: string) => {
-    for (var p of products) {
+    for (var p of selectedProducts) {
       if (p.merchandiseId === merchandiseId) {
         return p.title;
       }
