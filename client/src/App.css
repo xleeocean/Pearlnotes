@@ -131,6 +131,10 @@ p {
   margin-top: 10px !important;
 }
 
+.MuiListItemButton {
+  font-family:sans-serif  !important;
+}
+
 .MuiPaper-root {
   width: 320px;
 }

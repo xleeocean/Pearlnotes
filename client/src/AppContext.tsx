@@ -1,5 +1,7 @@
 import React, { useState, createContext, FC } from "react";
 
+const API_URL = 'http://localhost:3002'
+
 interface ITypeProfile {
   src: string,
   name: string,
@@ -118,7 +120,7 @@ const AppProvider: FC = ({ children }) => {
 
   const fetchProducts = async(reverse: string, type: string) => {
     try {
-      const response = await fetch(`http://localhost:3002/products/list?reverse=${reverse}&type=${type}`, {mode:'cors'});
+      const response = await fetch(`${API_URL}/products/list?reverse=${reverse}&type=${type}`, {mode:'cors'});
       const products = await response.json();
       setProducts(products);
       console.log(products);
@@ -138,12 +140,12 @@ const AppProvider: FC = ({ children }) => {
     try {
       if (cart.id.length === 0) {
         requestOptions.body = JSON.stringify(body);
-        const response = await fetch(`http://localhost:3002/cart/create`, requestOptions);
+        const response = await fetch(`${API_URL}/cart/create`, requestOptions);
         setCart(await response.json());
       } else {
         body.cartid = cart.id;
         requestOptions.body = JSON.stringify(body);
-        const response = await fetch(`http://localhost:3002/cart/add`, requestOptions);
+        const response = await fetch(`${API_URL}/cart/add`, requestOptions);
         const cartData = await response.json();
 
         console.log(cartData);
@@ -163,7 +165,7 @@ const AppProvider: FC = ({ children }) => {
       body: JSON.stringify({cartid: cart ? cart.id : '', merchandiseLineId: merchandiseLineId, quantity: quantity}),
     };
     try {
-      const response = await fetch(`http://localhost:3002/cart/updateQuantity`, requestOptions);
+      const response = await fetch(`${API_URL}/cart/updateQuantity`, requestOptions);
       setCart(await response.json());
     } catch (err) {
       console.log(err);

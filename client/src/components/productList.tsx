@@ -1,13 +1,9 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, } from 'react';
 import Toolbar from '@mui/material/Toolbar';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import ListItemText from '@mui/material/ListItemText';
-import Checkbox from '@mui/material/Checkbox';
 import AddShoppingCartOutlined from '@mui/icons-material/AddShoppingCartOutlined';
 import SortOutlinedIcon from '@mui/icons-material/SortOutlined';
-import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 import IconButton from '@mui/material/IconButton';
 import { AppContext } from '../AppContext'
 
@@ -26,7 +22,7 @@ const MenuProps = {
 export default function ProductList() {
   const [ sortReverse, setSortReverse ] = React.useState<string>('false');
   const { selected, setSelected, pearlTypes, jewelryTypes, products, fetchProducts, addProductToCart } = useContext(AppContext);
-
+  
   const handleChange = (event: SelectChangeEvent) => {
     setSortReverse(event.target.value);
     if (fetchProducts) {
