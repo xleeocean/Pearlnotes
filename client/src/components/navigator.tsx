@@ -79,7 +79,7 @@ export default function Navigator() {
         >
 
           <Box
-            sx={{ width:300}}
+            sx={{ width:320}}
             role="presentation"
             onClick={toggleDrawer('cart', false)}
             onKeyDown={toggleDrawer('cart', false)}

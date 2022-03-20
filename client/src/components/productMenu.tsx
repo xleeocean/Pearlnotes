@@ -1,64 +1,9 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
-
-const images1 = [
-  {
-    src: '/assets/Tahitian2.jpeg',
-    title: 'Tahitian',
-    width: '30%',
-  },
-  {
-    src: '/assets/SouthSeaGold1.jpeg',
-    title: 'South Sea Gold',
-    width: '40%',
-  },
-  {
-    src: '/assets/freshwater.jpg',
-    title: 'Freshwater',
-    width: '30%',
-  },
-  {
-    src: '/assets/akoya.jpeg',
-    title: 'Akoya',
-    width: '50%',
-  },
-  {
-    src: '/assets/baroque.jpeg',
-    title: 'Baroque',
-    width: '50%',
-  },
-];
-
-const images2 = [
-  {
-    src: '/assets/Necklace.jpeg',
-    title: 'Necklace',
-    width: '50%',
-  },
-  {
-    src: '/assets/Bracelets.jpeg',
-    title: 'Bracelet',
-    width: '50%',
-  },
-  {
-    src: '/assets/Pendant.jpeg',
-    title: 'Pendant',
-    width: '30%',
-  },
-  {
-    src: '/assets/earrings.jpeg',
-    title: 'Eearrings',
-    width: '40%',
-  },
-  {
-    src: '/assets/ring2.jpeg',
-    title: 'Ring',
-    width: '30%',
-  },
-];
+import { AppContext, IProductType } from '../AppContext';
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: 'relative',
@@ -125,6 +70,17 @@ const ImageMarked = styled('span')(({ theme }) => ({
 }));
 
 export default function Content() {
+  const { setSelected, pearlTypes, jewelryTypes } = useContext(AppContext);
+
+  const selectType =
+    (productType: string) =>
+    (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (setSelected) {
+        setSelected(productType);
+      } 
+  };
+
+
   return (
     <div className='content'>
       <div className='contentPic'>
@@ -134,15 +90,16 @@ export default function Content() {
       <div className='contentBox'>
         <h3>PEARL TYPE</h3>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
-          {images1.map((image) => (
+          {pearlTypes.map((type: IProductType) => (
             <ImageButton
               focusRipple
-              key={image.title}
+              key={type.type}
               style={{
-                width: image.width,
+                width: type.width,
               }}
+              onClick={selectType(type.type)}
             >
-              <ImageSrc style={{ backgroundImage: `url(${image.src})` }} />
+              <ImageSrc style={{ backgroundImage: `url(${type.src})` }} />
               <ImageBackdrop className="MuiImageBackdrop-root" />
               <Image>
                 <Typography
@@ -156,7 +113,7 @@ export default function Content() {
                     pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
                   }}
                 >
-                  {image.title}
+                  {type.type}
                   <ImageMarked className="MuiImageMarked-root" />
                 </Typography>
               </Image>
@@ -166,15 +123,16 @@ export default function Content() {
 
         <h3>JEWELRY TYPE</h3>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
-          {images2.map((image) => (
+          {jewelryTypes.map((type: IProductType) => (
             <ImageButton
               focusRipple
-              key={image.title}
+              key={type.type}
               style={{
-                width: image.width,
+                width: type.width,
               }}
+              onClick={selectType(type.type)}
             >
-              <ImageSrc style={{ backgroundImage: `url(${image.src})` }} />
+              <ImageSrc style={{ backgroundImage: `url(${type.src})` }} />
               <ImageBackdrop className="MuiImageBackdrop-root" />
               <Image>
                 <Typography
@@ -188,7 +146,7 @@ export default function Content() {
                     pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
                   }}
                 >
-                  {image.title}
+                  {type.type}
                   <ImageMarked className="MuiImageMarked-root" />
                 </Typography>
               </Image>

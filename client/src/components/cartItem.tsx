@@ -15,13 +15,13 @@ export default function CartItem () {
               loading="lazy" />
       </div>
       <div className='cartDetail'>
-        <h4>Title</h4>
+        <p>Golden South Sea Baroque Pearl and Diamond Pendant  Pendant </p>
         <div >
-          <p>Price: </p>
+          <p>Price:  $ 9,000</p>
         </div>
         <div className='adjustQuatity '>
 
-          <IconButton>
+          <IconButton >
             <IndeterminateCheckBoxOutlinedIcon />
           </IconButton>
           <p>item.amount</p>

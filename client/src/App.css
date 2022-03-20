@@ -22,7 +22,10 @@ h4 {
   line-height: 1;
   margin-block-start: 10px;
   margin-block-end: 5px;
+  margin-bottom: 10px;
   font-style: italic;
+  font-weight:normal;
+  font-stretch: condensed;
 }
 
 h5 {
@@ -33,6 +36,7 @@ h5 {
   font-style:italic;
   display: inline-block;
   text-align: start;
+  font-weight:normal;
 }
 
 p {
@@ -40,6 +44,7 @@ p {
   margin-block-end: 5px;
   font-family: sans-serif;
   font-size: small;
+  white-space: pre-wrap;
 }
 
 
@@ -74,31 +79,37 @@ p {
 .cart {
   padding: 15px;
   line-height: 1;
-  font-size: small;
+  font-size: smaller;
   font-family: sans-serif;
   overflow-y: scroll;
 }
 
 .cartItem {
-display: inline-flex;
+  display: inline-flex;
+  margin-bottom: 15px;
 }
 
 .cartPic{
-width: 80px;
-height: 80px;
-border: 1px solid black;
-margin-right: 10px;
-margin-top: 5px;
+  width: 80px;
+  height: 80px;
+  border: 1px solid grey;
+  margin-right: 10px;
+  margin-top: 5px;
+  align-self: center;
 }
 
+.cartDetail {
+  width: 200px;
+  line-height: 1.5;
+}
 .adjustQuatity {
-  height: auto;
+  height: 20px;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: nowrap;
- align-items: center;
+  align-items: center;
 }
 
 /* ===================== */
@@ -111,8 +122,8 @@ margin-top: 5px;
 .MuiButton-root {
   background-color: white !important;
   color: black !important;
-  border-radius: 5px  !important;
-  border: 1px solid lightgrey !important;
+  border-radius: 3px  !important;
+  border: 2px solid gray !important;
   height: 30px !important;
   width: 100% !important;
   font-size: small !important;
@@ -121,11 +132,10 @@ margin-top: 5px;
 }
 
 .MuiPaper-root {
-  width: 300px;
+  width: 320px;
 }
 
 .MuiInputLabel-root {
-  font: -webkit-control;
   font-size: small !important;
 }
 
@@ -174,7 +184,7 @@ margin-top: 5px;
 
 .contentBox {
   text-align: center;
-  width: 80vw;
+  width: 85vw;
   margin: auto;
   margin-bottom: 30px;
 }
@@ -190,7 +200,7 @@ margin-top: 5px;
 
 .flexbox-div {
   width: 300px;
-  height: 400px;
+  height: 380px;
   margin: 10px;
   position: relative;
 }

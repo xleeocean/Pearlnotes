@@ -1,14 +1,12 @@
 import React, { useContext } from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import { AppContext } from '../AppContext'
+import { AppContext, IProductType } from '../AppContext';
 
 
 
 export default function SideMenu () {
-  const { pearlType } = useContext(AppContext);
-  const { jewelryType } = useContext(AppContext);
-  const { selected, setSelected } = useContext(AppContext);
+  const { pearlTypes, jewelryTypes, setSelected } = useContext(AppContext);
   // const jumpTo = (e) => {
   //   setSelected()
   // }
@@ -17,13 +15,13 @@ export default function SideMenu () {
     <div className='sideMenu'>
       <h4> Pearl Type </h4>
       <List>
-        {pearlType.map((type) => (
+        {pearlTypes.map((type: IProductType) => (
           <ListItem>- {type} -</ListItem>
         ))}
       </List>
       <h4> Jewelry Type </h4>
       <List>
-        {jewelryType.map((type) => (
+        {jewelryTypes.map((type: IProductType) => (
           <ListItem>- {type} -</ListItem>
         ))}
       </List>

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import Toolbar from '@mui/material/Toolbar';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
@@ -9,6 +9,7 @@ import AddShoppingCartOutlined from '@mui/icons-material/AddShoppingCartOutlined
 import SortOutlinedIcon from '@mui/icons-material/SortOutlined';
 import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 import IconButton from '@mui/material/IconButton';
+import { AppContext } from '../AppContext'
 
 
 const ITEM_HEIGHT = 48;
@@ -23,11 +24,11 @@ const MenuProps = {
 };
 
 const pearltp = [
-'Tahitian',
-'South Sea Gold',
-'Freshwater',
-'Akoya',
-'Baroque',
+  'Tahitian',
+  'South Sea Gold',
+  'Freshwater',
+  'Akoya',
+  'Baroque',
 ];
 
 const jewelrytp = [
@@ -38,50 +39,50 @@ const jewelrytp = [
   'Rings',
   ];
 
-  const itemData = [
-    {
-      img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
-      title: 'Breakfast',
-      author: '@bkristastucchio',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
-      title: 'Burger',
-      author: '@rollelflex_graphy726',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
-      title: 'Camera',
-      author: '@helloimnik',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
-      title: 'Coffee',
-      author: '@nolanissac',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
-      title: 'Hats',
-      author: '@hjrc33',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62',
-      title: 'Honey',
-      author: '@arwinneil',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1516802273409-68526ee1bdd6',
-      title: 'Basketball',
-      author: '@tjdragotta',
-    },
-  ];
+const itemData = [
+  {
+    img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
+    title: 'Breakfast',
+    author: '@bkristastucchio',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
+    title: 'Burger',
+    author: '@rollelflex_graphy726',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
+    title: 'Camera',
+    author: '@helloimnik',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
+    title: 'Coffee',
+    author: '@nolanissac',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
+    title: 'Hats',
+    author: '@hjrc33',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62',
+    title: 'Honey',
+    author: '@arwinneil',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1516802273409-68526ee1bdd6',
+    title: 'Basketball',
+    author: '@tjdragotta',
+  },
+];
 
 
 export default function ProductList() {
   const [sort, setSort] = React.useState('');
   const [pearl, setPearl] = React.useState<string[]>([]);
   const [jewelry, setJewelry] = React.useState<string[]>([]);
-
+  const { selected, setSelected } = useContext(AppContext);
 
   const handleChange = (event: SelectChangeEvent) => {
     setSort(event.target.value);
@@ -97,8 +98,6 @@ export default function ProductList() {
       typeof value === 'string' ? value.split(',') : value,
     );
   };
-
-
 
 
   return (
@@ -173,8 +172,13 @@ export default function ProductList() {
 
             />
             <div className='listTag'>
-              <h4>Title</h4>
-              <p>Introduction IntroductionIntroductionIntroduction IntroductionIntroductionIntroduction IntroductionIntroductionIntroductionIntroduction</p>
+              <h4>Golden South Sea Baroque Pearl and Diamond Pendant</h4>
+              <p>South Sea Gold
+              10.0-11.0 mm
+              Gold
+              AAA
+              Round
+              </p>
 
               <div className='addToCart'>
                 <h5>$3000</h5>

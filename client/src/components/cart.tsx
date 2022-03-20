@@ -16,7 +16,7 @@ export default function Cart () {
       </List>
       <Divider />
       <div>
-        Subtotal
+        <p>Subtotal: </p>
       </div>
       <Button>Check Out</Button>
     </div>

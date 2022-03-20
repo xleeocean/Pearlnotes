@@ -1,10 +1,16 @@
 import React, { useState, createContext, FC } from "react";
 
-interface AppContextInterface {
-  selected: string[];
-  setSelected?: React.Dispatch<React.SetStateAction<never[]>>;
-  pearlType:string[];
-  jewelryType:string[];
+interface ITypeProfile {
+  src: string,
+  type: string,
+  width: string,
+}
+
+interface IAppContextInterface {
+  selected: string,
+  setSelected?: React.Dispatch<React.SetStateAction<string>>,
+  pearlTypes: ITypeProfile[],
+  jewelryTypes: ITypeProfile[],
   // cartItems: {
   //   id: string;
   //   tilte: string;
@@ -14,24 +20,77 @@ interface AppContextInterface {
 }
 
 const defaultState = {
-  selected: [],
-  pearlType: ['Thitian','South Sea Gold', 'Akoya', 'Freshwater', 'Baroque'],
-  jewelryType: ['Necklace','Pendant', 'Bracelet', 'Earrings', 'Ring'],
+  selected: '',
+  pearlTypes: [
+    {
+      src: '/assets/Tahitian2.jpeg',
+      type: 'Tahitian',
+      width: '30%',
+    },
+    {
+      src: '/assets/SouthSeaGold1.jpeg',
+      type: 'South Sea Gold',
+      width: '40%',
+    },
+    {
+      src: '/assets/freshwater.jpg',
+      type: 'Freshwater',
+      width: '30%',
+    },
+    {
+      src: '/assets/akoya.jpeg',
+      type: 'Akoya',
+      width: '50%',
+    },
+    {
+      src: '/assets/baroque.jpeg',
+      type: 'Baroque',
+      width: '50%',
+    },
+  ],
+  jewelryTypes: [
+    {
+      src: '/assets/Necklace.jpeg',
+      type: 'Necklace',
+      width: '50%',
+    },
+    {
+      src: '/assets/Bracelets.jpeg',
+      type: 'Bracelet',
+      width: '50%',
+    },
+    {
+      src: '/assets/Pendant.jpeg',
+      type: 'Pendant',
+      width: '30%',
+    },
+    {
+      src: '/assets/earrings.jpeg',
+      type: 'Eearrings',
+      width: '40%',
+    },
+    {
+      src: '/assets/ring2.jpeg',
+      type: 'Ring',
+      width: '30%',
+    },
+  ]
 }
 
-const AppContext = createContext<AppContextInterface>(defaultState);
+const AppContext = createContext<IAppContextInterface>(defaultState);
 
 const AppProvider: FC = ({ children }) => {
   const [selected, setSelected] = useState(defaultState.selected);
-  const [pearlType] = useState(defaultState.pearlType);
-  const [jewelryType] = useState(defaultState.jewelryType);
+  const [pearlTypes] = useState(defaultState.pearlTypes);
+  const [jewelryTypes] = useState(defaultState.jewelryTypes);
 
   return (
     <AppContext.Provider
       value = {{
-        selected, setSelected,
-        pearlType,
-        jewelryType,
+        selected,
+        setSelected,
+        pearlTypes,
+        jewelryTypes,
       }}
     >
       { children }
@@ -39,4 +98,5 @@ const AppProvider: FC = ({ children }) => {
   );
 };
 
-export { AppContext, AppProvider };
+export { AppContext, AppProvider};
+export interface IProductType extends ITypeProfile {};

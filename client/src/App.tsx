@@ -14,8 +14,9 @@ function App() {
         </div>
         <div className= "Body">
           <MainBox/>
+          <footer className="App-footer" >© 2022 by Alice</footer>
         </div>
-        {/* <footer className="App-footer" > Created by Alice</footer> */}
+
       </div>
     </AppProvider>
   );
