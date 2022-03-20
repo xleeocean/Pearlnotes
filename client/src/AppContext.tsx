@@ -2,7 +2,7 @@ import React, { useState, createContext, FC } from "react";
 
 interface ITypeProfile {
   src: string,
-  type: string,
+  name: string,
   width: string,
 }
 
@@ -24,54 +24,54 @@ const defaultState = {
   pearlTypes: [
     {
       src: '/assets/Tahitian2.jpeg',
-      type: 'Tahitian',
+      name: 'Tahitian',
       width: '30%',
     },
     {
       src: '/assets/SouthSeaGold1.jpeg',
-      type: 'South Sea Gold',
+      name: 'South Sea Gold',
       width: '40%',
     },
     {
       src: '/assets/freshwater.jpg',
-      type: 'Freshwater',
+      name: 'Freshwater',
       width: '30%',
     },
     {
       src: '/assets/akoya.jpeg',
-      type: 'Akoya',
+      name: 'Akoya',
       width: '50%',
     },
     {
       src: '/assets/baroque.jpeg',
-      type: 'Baroque',
+      name: 'Baroque',
       width: '50%',
     },
   ],
   jewelryTypes: [
     {
       src: '/assets/Necklace.jpeg',
-      type: 'Necklace',
+      name: 'Necklace',
       width: '50%',
     },
     {
       src: '/assets/Bracelets.jpeg',
-      type: 'Bracelet',
+      name: 'Bracelet',
       width: '50%',
     },
     {
       src: '/assets/Pendant.jpeg',
-      type: 'Pendant',
+      name: 'Pendant',
       width: '30%',
     },
     {
       src: '/assets/earrings.jpeg',
-      type: 'Eearrings',
+      name: 'Eearrings',
       width: '40%',
     },
     {
       src: '/assets/ring2.jpeg',
-      type: 'Ring',
+      name: 'Ring',
       width: '30%',
     },
   ]

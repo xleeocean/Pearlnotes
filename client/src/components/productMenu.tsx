@@ -93,11 +93,11 @@ export default function Content() {
           {pearlTypes.map((type: IProductType) => (
             <ImageButton
               focusRipple
-              key={type.type}
+              key={type.name}
               style={{
                 width: type.width,
               }}
-              onClick={selectType(type.type)}
+              onClick={selectType(type.name)}
             >
               <ImageSrc style={{ backgroundImage: `url(${type.src})` }} />
               <ImageBackdrop className="MuiImageBackdrop-root" />
@@ -113,7 +113,7 @@ export default function Content() {
                     pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
                   }}
                 >
-                  {type.type}
+                  {type.name}
                   <ImageMarked className="MuiImageMarked-root" />
                 </Typography>
               </Image>
@@ -126,11 +126,11 @@ export default function Content() {
           {jewelryTypes.map((type: IProductType) => (
             <ImageButton
               focusRipple
-              key={type.type}
+              key={type.name}
               style={{
                 width: type.width,
               }}
-              onClick={selectType(type.type)}
+              onClick={selectType(type.name)}
             >
               <ImageSrc style={{ backgroundImage: `url(${type.src})` }} />
               <ImageBackdrop className="MuiImageBackdrop-root" />
@@ -146,7 +146,7 @@ export default function Content() {
                     pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
                   }}
                 >
-                  {type.type}
+                  {type.name}
                   <ImageMarked className="MuiImageMarked-root" />
                 </Typography>
               </Image>
