@@ -25,7 +25,7 @@ const MenuProps = {
 
 export default function ProductList() {
   const [ sortReverse, setSortReverse ] = React.useState<string>('false');
-  const { selected, setSelected, pearlTypes, jewelryTypes, products, fetchProducts } = useContext(AppContext);
+  const { selected, setSelected, pearlTypes, jewelryTypes, products, fetchProducts, addProductToCart } = useContext(AppContext);
 
   const handleChange = (event: SelectChangeEvent) => {
     setSortReverse(event.target.value);
@@ -33,16 +33,6 @@ export default function ProductList() {
       fetchProducts(event.target.value, selected);
     }
   };
-
-  // const handleFilter = (event: SelectChangeEvent<typeof pearl>) => {
-  //   const {
-  //     target: { value },
-  //   } = event;
-
-  //   setPearl(
-  //     typeof value === 'string' ? value.split(',') : value,
-  //   );
-  // };
 
   return (
     <div className='contentBox'>
@@ -98,7 +88,7 @@ export default function ProductList() {
               <div className='addToCart'>
                 <h5>${item.price}</h5>
                 <IconButton style={{position:"absolute", left:'60px', bottom:"-8px"}}>
-                  <AddShoppingCartOutlined fontSize="small"  />
+                  <AddShoppingCartOutlined fontSize="small" onClick={() => addProductToCart ? addProductToCart(item.merchandiseId) : null} />
                 </IconButton>
 
               </div>

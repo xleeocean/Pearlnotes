@@ -6,6 +6,18 @@ interface ITypeProfile {
   width: string,
 }
 
+interface ICarItem {
+  merchandiseId: string,
+  merchandiseLineId: string,
+  quantity: number,
+}
+
+interface ICar {
+  id: string,
+  products: ICarItem[],
+  totalAmount: string,
+}
+
 interface IAppContextInterface {
   selected: string,
   setSelected?: React.Dispatch<React.SetStateAction<string>>,
@@ -13,12 +25,9 @@ interface IAppContextInterface {
   jewelryTypes: ITypeProfile[],
   products: IProductProfile[],
   fetchProducts?: (reverse: string, type: string) => Promise<void>,
-  // cartItems: {
-  //   id: string;
-  //   tilte: string;
-  //   price: number;
-  //   quantity: number;
-  // }[]
+  cart: ICar,
+  addProductToCart?: (merchandiseId: string) => Promise<void>,
+  updateCartItemQuantity?: (merchandiseLineId: string, quantity: number) => Promise<void>,
 }
 
 interface IProductProfile {
@@ -28,6 +37,7 @@ interface IProductProfile {
   typeStr: string,
   description: string,
   price: string,
+  merchandiseId: string,
 }
 
 const defaultState = {
@@ -87,6 +97,11 @@ const defaultState = {
     },
   ],
   products: [],
+  cart: {
+    id: 'Z2lkOi8vc2hvcGlmeS9DYXJ0Lzg3N2ZjZmMwYTVkMTU3MjZjMWM4NzBmN2ViNDZjZWIx',
+    products: [],
+    totalAmount: '0.0'
+  }
 }
 
 const AppContext = createContext<IAppContextInterface>(defaultState);
@@ -96,6 +111,7 @@ const AppProvider: FC = ({ children }) => {
   const [pearlTypes] = useState(defaultState.pearlTypes);
   const [jewelryTypes] = useState(defaultState.jewelryTypes);
   const [products, setProducts] = useState(defaultState.products);
+  const [cart, setCart] = useState(defaultState.cart);
 
   const fetchProducts = async(reverse: string, type: string) => {
     try {
@@ -109,6 +125,46 @@ const AppProvider: FC = ({ children }) => {
     setSelected(type);
   }
 
+  const addProductToCart = async(merchandiseId: string) => {
+    const requestOptions: any = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      mode: 'cors',
+    };
+    var body: any = { merchandiseId: merchandiseId, quantity: 1 }
+    try {
+      if (cart.id.length === 0) {
+        requestOptions.body = JSON.stringify(body);
+        const response = await fetch(`http://localhost:3002/cart/create`, requestOptions);
+        setCart(await response.json());
+      } else {
+        body.cartid = cart.id;
+        requestOptions.body = JSON.stringify(body);
+        const response = await fetch(`http://localhost:3002/cart/add`, requestOptions);
+        const cartData = await response.json();
+        console.log(cartData);
+        setCart(cartData);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateCartItemQuantity = async(merchandiseLineId: string, quantity: number) => {
+    const requestOptions: any = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      mode: 'cors',
+      body: JSON.stringify({cartid: cart ? cart.id : '', merchandiseLineId: merchandiseLineId, quantity: quantity}),
+    };
+    try {
+      const response = await fetch(`http://localhost:3002/cart/updateQuantity`, requestOptions);
+      setCart(await response.json());
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <AppContext.Provider
       value = {{
@@ -118,6 +174,9 @@ const AppProvider: FC = ({ children }) => {
         jewelryTypes,
         products,
         fetchProducts,
+        addProductToCart,
+        updateCartItemQuantity,
+        cart,
       }}
     >
       { children }
@@ -128,3 +187,4 @@ const AppProvider: FC = ({ children }) => {
 export { AppContext, AppProvider};
 export interface IProductType extends ITypeProfile {};
 export interface IProduct extends IProductProfile{};
+export interface ICarItemProfile extends ICarItem{};

@@ -8,7 +8,8 @@ interface Product {
   image: string,
   typeStr: string,
   description: string,
-  price: string
+  price: string,
+  merchandiseId: string,
 }
 
 class ProductsController {
@@ -25,6 +26,13 @@ class ProductsController {
                 title
                 description
                 productType
+                variants(first: 1) {
+                  edges {
+                    node {
+                      id
+                    }
+                  }
+                }
                 priceRange {
                   minVariantPrice {
                     amount
@@ -63,6 +71,7 @@ class ProductsController {
           typeStr: item['node']['productType'],
           description: item['node']['description'],
           price: item['node']['priceRange']['minVariantPrice']['amount'],
+          merchandiseId: item['node']['variants']['edges'][0]['node']['id'],
         });
       });
       res.status(200).json(products);

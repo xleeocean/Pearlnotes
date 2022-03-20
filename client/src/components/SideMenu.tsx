@@ -21,8 +21,9 @@ export default function SideMenu () {
     <div className='sideMenu'>
       <h4> Pearl Type </h4>
       <List>
-        {pearlTypes.map((type: IProductType) => (
+        {pearlTypes.map((type: IProductType, i: number) => (
           <ListItemButton
+          key={i}
           onClick={selectType(type.name)}>
             - {type.name} -
           </ListItemButton>
@@ -30,8 +31,9 @@ export default function SideMenu () {
       </List>
       <h4> Jewelry Type </h4>
       <List>
-        {jewelryTypes.map((type: IProductType) => (
+        {jewelryTypes.map((type: IProductType, i: number) => (
           <ListItemButton
+          key={i}
           onClick={selectType(type.name)}>
             - {type.name} -
           </ListItemButton>
