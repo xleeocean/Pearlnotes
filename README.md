@@ -68,12 +68,124 @@ Architectural Overview:
 The application is created in React framework with customized MUI components. Such as Button, IconButton, Box, Drawer, List,  ToolBar and AppBar. There are also self-built reusable components such as cartItem. React context is used for data communication between components. Responsive design was used in UI to  ensure content consistency across devices. 
 
 ## Back-end
-Our back-end service play an intermedia role between our front-end UI and the Shopify APIs. It converts the complex data format from Shopify, extract and simplify the structure for our front-end web apps. 
+Our back-end service play an intermedia role between our front-end UI and the Shopify APIs. It converts the complex data format from Shopify, extract and simplify the structure for our front-end web apps. It provides the following APIs:
+
+### List Products by Type
+Get a list of jewelry products by given type. Could use reverse flag to sort products by price.
+**URL**: `/product/list?type={STRING}&reverse={BOOLEAN STRING}`
+**METHOD**: `GET`
+**Auth required**: No
+#### Success Response
+**Code** : `200 OK`
+**Content examples**
+```json
+[{
+  id: "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0Lzc2MjAyMTkxNDIzOTc=",
+  title: "Akoya Cultured Single Pearl Pendant in 18K Yellow Gold",
+  image: "https://cdn.shopify.com/s/files/1/0631/5645/3629/products/mrq10045axxw.jpg?v=1647625859",
+  typeStr: "Ring",
+  description: "Akoya cultured pearl 8mm 18K Yellow Gold",
+  price: '950.0,
+  merchandiseId: string,
+}, {
+  ...
+}
+```
+
+### Shopping Cart Create
+Create shopping cart with a global unique ID. It will be triggered when adding first item into the cart.
+**URL**: `/cart/create`
+**METHOD**: `POST`
+**Data constraints**
+```json
+{
+  merchandiseId: 'GlmeS9Qcm9kdWN0Lzc2Mj',
+  quantity: 2
+}
+```
+
+#### Success Response
+**Code** : `201 OK`
+**Content examples**
+```json
+{
+  id: "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0Lzc2MjA=",
+  totalAmount: '1000',
+  products: [
+    {
+      merchandiseId: 'GlmeS9Qcm9kdWN0L',
+      merchandiseLineId: 'vc2hvcGlmeS9',
+      quantity: 1,
+    }
+  ]
+}
+```
+
+### Add Item into Shopping Ceate
+Adding a product into the existing shopping cart
+**URL**: `/cart/add`
+**METHOD**: `POST`
+**Data constraints**
+```json
+{
+  cartid: 'm9kdWN0Lzc2Mj',
+  merchandiseId: 'GlmeS9Qcm9kdWN0Lzc2Mj',
+  quantity: 2
+}
+```
+
+#### Success Response
+**Code** : `201 OK`
+**Content examples**
+```json
+{
+  id: "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0Lzc2MjA=",
+  totalAmount: '1000',
+  products: [
+    {
+      merchandiseId: 'GlmeS9Qcm9kdWN0L',
+      merchandiseLineId: 'vc2hvcGlmeS9',
+      quantity: 2,
+    }
+  ]
+}
+```
+
+### Update item quantity in the Cart
+Update the quantity of a product insidethe cart.
+**URL**: `/cart/update`
+**METHOD**: `POST`
+**Data constraints**
+```json
+{
+  cartid: 'm9kdWN0Lzc2Mj',
+  merchandiseId: 'GlmeS9Qcm9kdWN0Lzc2Mj',
+  quantity: 3
+}
+```
+
+#### Success Response
+**Code** : `201 OK`
+**Content examples**
+```json
+{
+  id: "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0Lzc2MjA=",
+  totalAmount: '1000',
+  products: [
+    {
+      merchandiseId: 'GlmeS9Qcm9kdWN0L',
+      merchandiseLineId: 'vc2hvcGlmeS9',
+      quantity: 3
+    }
+  ]
+}
+```
 
 
 ## Setup
 For server:
-cd server; npm install; npm run build; npm run start;
+Adding your access token into `config.ts` file under the `/server` path.
+Running following commend cd server; npm install; npm run build; npm run start;
 
 For client:
 cd client; npm install; npm run start;
