@@ -222,7 +222,8 @@ Update the quantity of a product insidethe cart.
 ## Setup
 For server:
 Adding your access token into `config.ts` file under the `/server` path.
-Running following commend cd server; npm install; npm run build; npm run start;
+
+  Running following commends: cd server; npm install; npm run build; npm run start;
 
 For client:
 cd client; npm install; npm run start;
