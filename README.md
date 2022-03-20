@@ -13,62 +13,65 @@
 
 ## Overview
 
-PearlNotes is an e-commerce application that allows customer to browse and purchase pearl jewelries online. The application provides a clean and elegant look that match the contemporary design of the jewelries. There are three main feathers in the application: menu, product list, and cart. 
+PearlNotes is an e-commerce application that allows customers to browse and purchase pearl jewelries online. The application provides a clean and elegant look that matches the contemporary design of the jewelries. Responsive design was used in UI to ensure content consistency across devices. There are three main feathers in the application: menu, product list, and cart. 
 
-The menu feather navigates users to category of products by pearl type and jewelry type. Users can easily switch to other category using the side menu. 
+The menu feather navigates users to the category of products by pearl type or jewelry type. Users can easily switch to other category using the side menu. 
 
 The product list feather displays the photos and introduction of the products. List can be sorted by price ascending or descending. Users can also add products in cart.
 
-The cart feather shows the in cart products and the total price.  Users can adjust quantity and check out  in the cart.
+The cart feather shows the in cart products and the total price. Users can adjust quantity and check out in the cart.
 
 ## Requirement Fulfilled
 * Use a modern JS Library/Framework like React, Angular, etc.
 
-PearlNotes front-end is fully based on latest React library with Typescript.
+  PearlNotes front-end is fully based on latest React library with Typescript.
 
 * Create an application that can be interacted with in a minimum of three different ways by the user.
 
-User will be able to do the following things: 
-  1. User can view the Jewelries by selecting different types,
-  2. User can switch to other category using the side menu,
-  3. User can add Jewelries to the shopping cart,
-  4. User can increase/descrease the quantity of the Jewelries. 
+  User will be able to do the following things: 
+    1. User can view the Jewelries by selecting different types,
+    2. User can switch to other category using the side menu,
+    3. User can add Jewelries to the shopping cart,
+    4. User can increase/descrease the quantity of the Jewelries. 
 
 * The usage of a special architectural pattern:
+
+  The application uses MVC (model-view-controller) pattern for architectural:
+
+    Model:
+    The Model component corresponds to all the data-related logic that the user works with. In PearlNotes, the model component is provided by Shopify GraphQL, for the use of storing and managing our inventory and in-cart items. 
+
+    View:
+    The View component is used for all the UI logic of the application. In PearlNotes, the view component is created in React. It provides an UI with bottoms, list, dropdown and drawers for users to interacts with.
+
+    Controller:
+    Controllers act as an interface  between Model and View components to process all the business logic and incoming requests, manipulate data using the Model component and interact with the Views to render the final output. The PearlNotes application provides two set of controllers: products and cart. The products controller deals with request to get list of inventory by pearl type. The cart controller deals with post requests to add and update cart items.
 
 
 * Integration with a backend service developed by you with CRUD:
 
-User can manipulate their Jewelry items inside the shopping cart. All the traffic are handled by backend service and Shopify REST APIs. That includes:
-1. Create shopping cart with a global unique ID when a user add first jewelry into the cart
-2. Retrieve existing cart if the user already has the cart ID.
-3. Increase and describe the quantity of the items inside the shopping cart.
-4. Once the quantity of one item is zero. The item will be removed from shopping cart.
+  User can manipulate their Jewelry items inside the shopping cart. All the traffic are handled by backend service and Shopify REST APIs. That includes:
+  1. Create shopping cart with a global unique ID when a user add first jewelry into the cart
+  2. Retrieve existing cart if the user already has the cart ID.
+  3. Increase and describe the quantity of the items inside the shopping cart.
+  4. Once the quantity of one item is zero. The item will be removed from shopping cart.
 
 * Integration wtih a 3rd party RESTFUL API:
 
-Integrated with Shopify APIs.
+  Integrated with Shopify APIs.
 
 * Usage of at least 5 UI components from material-ui/@core:
 
+  The application is created in React framework with customized MUI components. Such as Button, IconButton, Box, Drawer, List, ToolBar and AppBar. 
 
 * An example of a resuable component that you have created and used in the app:
 
-
+  The cartItem component.
+  
+  
 ## Architecture
 
 <img width="624" alt="Screen Shot 2022-03-20 at 06 46 28" src="https://user-images.githubusercontent.com/80747028/159166289-9eada34c-b1da-4fb4-9aad-0491936beb93.png">
-
-The application uses MVC (model- view- controller) pattern for architectural:
-
-#### Model
-The Model component corresponds to all the data-related logic that the user works with. In PearlNotes, the model component is provided by Shopify GraphQL, for the use of storing and managing our inventory and in-cart items. 
-
-#### View
-The View component is used for all the UI logic of the application. In PearlNotes, the view component is created in React. It provides an UI with bottoms, list, dropdown and drawers for users to interacts with.
-
-#### Controller
-Controllers act as an interface  between Model and View components to process all the business logic and incoming requests, manipulate data using the Model component and interact with the Views to render the final output. The PearlNotes application provides two set of controllers: products and cart. The products controller deals with request to get list of inventory by pearl type. The cart controller deals with post requests to add and update cart items.
 
 
 ## Front-end
@@ -78,7 +81,6 @@ Tech Stack: React with Typescript, Maria UI
 
 ![image](https://user-images.githubusercontent.com/80747028/159154109-da7680fa-8ee4-4842-b28c-289232a794c3.png)
 
-The application is created in React framework with customized MUI components. Such as Button, IconButton, Box, Drawer, List, ToolBar and AppBar. There are also self-built reusable components such as cartItem. React context is used for data communication between components. Responsive design was used in UI to  ensure content consistency across devices. 
 
 ### Main View and Menu
 
