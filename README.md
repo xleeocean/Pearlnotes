@@ -29,9 +29,10 @@ PearlNotes front-end is fully based on latest React library with Typescript.
 * Create an application that can be interacted with in a minimum of three different ways by the user.
 
 User will be able to do the following things: 
-  1. User can view the Jewelries by selecting different types.
-  2. User can add Jewelries to the shopping cart.
-  3. User can increase/descrease the quantity of the Jewelries. 
+  1. User can view the Jewelries by selecting different types,
+  2. User can switch to other category using the side menu,
+  3. User can add Jewelries to the shopping cart,
+  4. User can increase/descrease the quantity of the Jewelries. 
 
 * The usage of a special architectural pattern:
 
@@ -58,14 +59,43 @@ Integrated with Shopify APIs.
 
 <img width="624" alt="Screen Shot 2022-03-20 at 06 46 28" src="https://user-images.githubusercontent.com/80747028/159166289-9eada34c-b1da-4fb4-9aad-0491936beb93.png">
 
+The application uses MVC (model- view- controller) pattern for architectural:
+
+#### Model
+The Model component corresponds to all the data-related logic that the user works with. In PearlNotes, the model component is provided by Shopify GraphQL, for the use of storing and managing our inventory and in-cart items. 
+
+#### View
+The View component is used for all the UI logic of the application. In PearlNotes, the view component is created in React. It provides an UI with bottoms, list, dropdown and drawers for users to interacts with.
+
+#### Controller
+Controllers act as an interface  between Model and View components to process all the business logic and incoming requests, manipulate data using the Model component and interact with the Views to render the final output. The PearlNotes application provides two set of controllers: products and cart. The products controller deals with request to get list of inventory by pearl type. The cart controller deals with post requests to add and update cart items.
+
+
 ## Front-end
 Tech Stack: React with Typescript, Maria UI
 
-Architectural Overview:
+### Architectural Overview:
 
 ![image](https://user-images.githubusercontent.com/80747028/159154109-da7680fa-8ee4-4842-b28c-289232a794c3.png)
 
-The application is created in React framework with customized MUI components. Such as Button, IconButton, Box, Drawer, List,  ToolBar and AppBar. There are also self-built reusable components such as cartItem. React context is used for data communication between components. Responsive design was used in UI to  ensure content consistency across devices. 
+The application is created in React framework with customized MUI components. Such as Button, IconButton, Box, Drawer, List, ToolBar and AppBar. There are also self-built reusable components such as cartItem. React context is used for data communication between components. Responsive design was used in UI to  ensure content consistency across devices. 
+
+### Main View and Menu
+
+![image](https://user-images.githubusercontent.com/80747028/159175879-fcdfff0c-28a1-4d30-892d-4221c56f3a6d.png)
+
+### Product List
+
+![image](https://user-images.githubusercontent.com/80747028/159175944-656d3605-9833-4656-9d5f-10f7dc983cf0.png)
+
+
+### Cart
+
+![image](https://user-images.githubusercontent.com/80747028/159175917-ad3c7d5d-ff35-4e69-88c3-45fc20c56097.png)
+
+
+### Mobile View
+
 
 ## Back-end
 Our back-end service play an intermedia role between our front-end UI and the Shopify APIs. It converts the complex data format from Shopify, extract and simplify the structure for our front-end web apps. It provides the following APIs:
