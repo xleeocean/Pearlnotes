@@ -1,5 +1,4 @@
 # PearlNotes
-http://ec2-52-53-189-23.us-west-1.compute.amazonaws.com/
 
 ![typescript](https://img.shields.io/badge/TyprScript-20232A?style=for-the-badge&logo=typescript&logoColor=3178C6)
 ![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
@@ -21,13 +20,13 @@ The menu feather navigates users to the category of products by pearl type or je
 The product list feather displays the photos and introduction of the products. List can be sorted by price ascending or descending. Users can also add products in cart.
 
 The cart feather shows the in cart products and the total price. Users can adjust quantity and check out in the cart.
-
+<!-- 
 ## Requirement Fulfilled
 * Use a modern JS Library/Framework like React, Angular, etc.
 
   PearlNotes front-end is fully based on latest React library with Typescript.
-
-* Create an application that can be interacted with in a minimum of three different ways by the user.
+ -->
+<!-- * Create an application that can be interacted with in a minimum of three different ways by the user.
 
   User will be able to do the following things: 
     1. User can view the Jewelries by selecting different types,
@@ -48,27 +47,8 @@ The cart feather shows the in cart products and the total price. Users can adjus
     Controller:
     Controllers act as an interface  between Model and View components to process all the business logic and incoming requests, manipulate data using the Model component and interact with the Views to render the final output. The PearlNotes application provides two set of controllers: products and cart. The products controller deals with request to get list of inventory by pearl type. The cart controller deals with post requests to add and update cart items.
 
+ -->
 
-* Integration with a backend service developed by you with CRUD:
-
-  User can manipulate their Jewelry items inside the shopping cart. All the traffic are handled by backend service and Shopify REST APIs. That includes:
-  1. Create shopping cart with a global unique ID when a user add first jewelry into the cart
-  2. Retrieve existing cart if the user already has the cart ID.
-  3. Increase and describe the quantity of the items inside the shopping cart.
-  4. Once the quantity of one item is zero. The item will be removed from shopping cart.
-
-* Integration wtih a 3rd party RESTFUL API:
-
-  Integrated with Shopify APIs.
-
-* Usage of at least 5 UI components from material-ui/@core:
-
-  The application is created in React framework with customized MUI components. Such as Button, IconButton, Box, Drawer, List, ToolBar and AppBar. 
-
-* An example of a resuable component that you have created and used in the app:
-
-  The cartItem component.
-  
   
 ## Architecture
 
